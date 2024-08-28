@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 400px;
+    transform: translateY(50%);
+}
+
+.container {
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+}
+
+.button {
+    background: white;
+    width: 90px;
+    flex: auto;
+    font-size: 30px;
+    border: 1px solid black;
+}
+
+.clearButton {
+    background: red;
+}
+
+.operatorButton {
+    background: grey;
+}
+
+.equalsAndBackButton {
+    background: lightskyblue;
+}
+
+.display {
+    height: 80px;
+    font-size: 60px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    border: 1.5px solid black;
+    background: lightgray;
+}
+
+.pastDisplay {
+    height: 50px;
+    font-size: 30px;
+}

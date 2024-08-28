@@ -31,7 +31,7 @@ function operate(num1, num2, operator) {
     else if(operator == "/") {
         solution = divide(parseFloat(num1), parseFloat(num2));
     }
-    solution = Math.round(solution * 100) / 100;
+    solution = Math.round(solution * 100000) / 100000;
 
     return solution;
 }

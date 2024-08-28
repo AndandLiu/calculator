@@ -8,27 +8,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <span id="pastDisplay"></span>
-    <span id="display"></span>
-    <div>
-        <button onclick="displayNum(1)">1</button>
-        <button onclick="displayNum(2)">2</button>
-        <button onclick="displayNum(3)">3</button>
-        <button onclick="displayNum(4)">4</button>
-        <button onclick="displayNum(5)">5</button>
-        <button onclick="displayNum(6)">6</button>
-        <button onclick="displayNum(7)">7</button>
-        <button onclick="displayNum(8)">8</button>
-        <button onclick="displayNum(9)">9</button>
-        <button onclick="displayNum(0)">0</button>
-        <button id="decimal" onclick="displayNum('.')">.</button>
-        <button onclick="calculatorOperator('+')">+</button>
-        <button onclick="calculatorOperator('-')">-</button>
-        <button onclick="calculatorOperator('*')">x</button>
-        <button onclick="calculatorOperator('/')">÷</button>
-        <button onclick="equals()">=</button>
-        <button onclick="backSpace()">⌫</button>
-        <button onclick="clearButton()">CE</button>
+    <span class="display pastDisplay" id="pastDisplay"></span>
+    <span class="display" id="display"></span>
+    <div class="container">
+        <button class="button" onclick="displayNum(1)">1</button>
+        <button class="button" onclick="displayNum(2)">2</button>
+        <button class="button" onclick="displayNum(3)">3</button>
+        <button class="button operatorButton" onclick="calculatorOperator('+')">+</button>
+        <button class="button" onclick="displayNum(4)">4</button>
+        <button class="button" onclick="displayNum(5)">5</button>
+        <button class="button" onclick="displayNum(6)">6</button>
+        <button class="button operatorButton" onclick="calculatorOperator('-')">-</button>
+        <button class="button" onclick="displayNum(7)">7</button>
+        <button class="button" onclick="displayNum(8)">8</button>
+        <button class="button" onclick="displayNum(9)">9</button>
+        <button class="button operatorButton" onclick="calculatorOperator('*')">*</button>
+        <button class="button clearButton" onclick="clearButton()">CE</button>
+        <button class="button" onclick="displayNum(0)">0</button>
+        <button id="decimal" class="button" onclick="displayNum('.')">.</button>
+        <button class="button operatorButton" onclick="calculatorOperator('/')">÷</button>
+        <button class="button equalsAndBackButton" onclick="backSpace()">⌫</button>
+        <button class="button equalsAndBackButton" onclick="equals()">=</button>
     </div>
 </body>
 </html>
