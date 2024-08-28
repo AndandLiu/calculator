@@ -38,6 +38,11 @@ function operate(num1, num2, operator) {
 
 function displayNum(num) {
 
+    if(num == ".") {
+        const decimal = document.querySelector("#decimal");
+        decimal.disabled = true;
+    }
+
     if(currentOperator != "") {
         secondNum += num;
         display(secondNum);
@@ -51,9 +56,13 @@ function displayNum(num) {
 function calculatorOperator(operator) {
 
     if(firstNum == "") {
+        clearAll();
         display("ERROR");
     }
     else {
+        const decimal = document.querySelector("#decimal");
+        decimal.disabled = false;
+
         if(currentOperator == "divide" && secondNum == "0") {
             clearAll();
             display("DON'T DO THAT");
@@ -71,7 +80,6 @@ function calculatorOperator(operator) {
 }
 
 function equals() {
-
     if(currentOperator == "divide" && secondNum == "0") {
         clearAll();
         display("DON'T DO THAT");
@@ -82,11 +90,14 @@ function equals() {
         display(solution);
     }
     else {
+        clearAll();
         display("ERROR");
     }
 }
 
 function clearAll() {
+    const decimal = document.querySelector("#decimal");
+    decimal.disabled = false;
     firstNum = "";
     secondNum = "";
     currentOperator = "";
