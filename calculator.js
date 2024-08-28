@@ -44,11 +44,11 @@ function displayNum(num) {
 
     if(currentOperator != "") {
         secondNum += num;
-        display(secondNum);
+        updateDisplay();
     }
     else {
         firstNum += num;
-        display(firstNum);
+        updateDisplay();
     }
 }
 
@@ -56,23 +56,25 @@ function calculatorOperator(operator) {
 
     if(firstNum == "") {
         clearAll();
-        display("ERROR");
+        updateDisplay("ERROR");
     }
     else {
         disableDecimalButton(false);
 
         if(currentOperator == "divide" && secondNum == "0") {
             clearAll();
-            display("DON'T DO THAT");
+            updateDisplay("DON'T DO THAT");
         }
         else if(currentOperator != "" && secondNum != "") {
+            updateDisplay("past");
             firstNum = operate(firstNum, secondNum, currentOperator);
             secondNum = "";
             currentOperator = operator;
-            display(firstNum);
+            updateDisplay();
         }
         else {
             currentOperator = operator;
+            updateDisplay();
         }
     }
 }
@@ -80,16 +82,18 @@ function calculatorOperator(operator) {
 function equals() {
     if(currentOperator == "divide" && secondNum == "0") {
         clearAll();
-        display("DON'T DO THAT");
+        updateDisplay("DON'T DO THAT");
     }
     else if(currentOperator != "" && secondNum != "") {
+        updateDisplay("past");
         const solution = operate(firstNum, secondNum, currentOperator);
         clearAll();
-        display(solution);
+        firstNum = solution.toString();
+        updateDisplay();
     }
     else {
         clearAll();
-        display("ERROR");
+        updateDisplay("ERROR");
     }
 }
 
@@ -98,13 +102,27 @@ function clearAll() {
     firstNum = "";
     secondNum = "";
     currentOperator = "";
-    display("");
+    updateDisplay();
 }
 
-function display(text) {
-    const display = document.querySelector("#display");
+function clearButton() {
+    clearAll();
+    updateDisplay("past");
+}
 
-    display.textContent = text;
+function updateDisplay(text) {
+    const display = document.querySelector("#display");
+    const pastDisplay = document.querySelector("#pastDisplay");
+
+    if(text == undefined) {
+        display.textContent = firstNum + " " + currentOperator + " " + secondNum;
+    }
+    else if(text == "past") {
+        pastDisplay.textContent = firstNum + " " + currentOperator + " " + secondNum;
+    }
+    else {
+        display.textContent = text;
+    }
 }
 
 function backSpace() {
@@ -113,14 +131,18 @@ function backSpace() {
             disableDecimalButton(false);
         }
         secondNum = secondNum.substring(0, secondNum.length - 1);
-        display(secondNum);
+        updateDisplay();
+    }
+    else if(currentOperator != "") {
+        currentOperator = ""
+        updateDisplay();
     }
     else if(typeof firstNum == "string") {
         if(firstNum.slice(-1) == ".") {
             disableDecimalButton(false);
         }
         firstNum = firstNum.substring(0, firstNum.length - 1);
-        display(firstNum);
+        updateDisplay();
     }
 }
 
@@ -144,6 +166,6 @@ document.addEventListener('keydown', function(event) {
         backSpace();
     }
     else if(event.key == "Escape") {
-        clearAll();
+        clearButton();
     }
 });
