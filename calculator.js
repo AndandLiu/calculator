@@ -109,3 +109,14 @@ function display(text) {
 
     display.textContent = text;
 }
+
+function backSpace() {
+    if(secondNum != "") {
+        secondNum = secondNum.substring(0, secondNum.length - 1);
+        display(secondNum);
+    }
+    else if(typeof firstNum == "string") {
+        firstNum = firstNum.substring(0, firstNum.length - 1);
+        display(firstNum);
+    }
+}
